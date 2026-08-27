@@ -12,7 +12,7 @@ import { FaStar, FaHeart, FaShoppingBag, FaEye } from 'react-icons/fa';
 export default function Home_TopSelling() {
 
       // =========================== ShopContext =======================
-      const { cart, addToCart, inCreaseQuantity, deCreaseQuantity, toggleLike, likeCart = [], filterProducts } = useContext(ShopContext)
+      const { addToCart, getProductQuantity, inCreaseQuantity, deCreaseQuantity, toggleLike, likeCart = [], filterProducts } = useContext(ShopContext)
 
       // =========================== Loading =======================
       const [loading, setLoading] = useState(true)
@@ -33,9 +33,17 @@ export default function Home_TopSelling() {
             // ពិនិត្យមើលថាតើទំនិញនេះស្ថិតក្នុង likeCart ហើយឬยัง
             const isList = likeCart.some((listItem) => listItem.id === id);
 
-            // 🌟 ស្វែងរកទំនិញនេះនៅក្នុង cart ដើម្បីយក amount មកបង្ហាញឱ្យត្រូវពេល Increase/Decrease
-            const cartItem = cart.find((cartProd) => cartProd.id === id);
-            const currentAmount = cartItem ? cartItem.amount : 1;
+            // ស្វែងរកបរិមាណបច្ចុប្បន្នរបស់ទំនិញនេះក្នុង Cart
+            const currentAmount = getProductQuantity(id);
+
+            // 🌟 មុខងារពេលចុចសញ្ញា (+) : បើមិនទាន់មានក្នុង Cart ឱ្យវា Add ចូល តែបើមានហើយឱ្យវា Increase ចំនួនកើនឡើង
+            const handleIncrease = () => {
+                  if (currentAmount === 0) {
+                        addToCart(item);
+                  } else {
+                        inCreaseQuantity(id);
+                  }
+            };
 
             return (
                   <div className='w-full bg-white overflow-hidden relative space-y-3 p-4 rounded-2xl border border-gray-100 shadow-md hover:shadow-xl group transition-all duration-300'>
@@ -46,30 +54,35 @@ export default function Home_TopSelling() {
                               <img src={imgUrl2} alt="" className='w-full h-full object-center object-cover cursor-pointer group-hover:opacity-100 opacity-0 duration-500 transition-opacity absolute inset-0' />
 
                               {/* discount */}
-                              <div className='absolute top-3 left-3 z-10'>
-                                    <span className='text-xs font-bold text-white capitalize bg-rose-600 py-1 px-2.5 rounded-full shadow-sm'>
-                                          -{discount}
-                                    </span>
-                              </div>
+                              {discount && (
+                                    <div className='absolute top-3 left-3 z-10'>
+                                          <span className='text-xs font-bold text-white capitalize bg-rose-600 py-1 px-2.5 rounded-full shadow-sm'>
+                                                -{discount}
+                                          </span>
+                                    </div>
+                              )}
+
                               {/* wishlist and eye buttons with translate-x */}
                               <div className='absolute top-3 right-3 z-10 flex flex-col gap-2 overflow-hidden p-1'>
                                     {/* wishlist button */}
                                     <button
                                           onClick={() => toggleLike(item)}
-                                          className={`w-9 h-9 rounded-full flex items-center justify-center shadow-md transition-all duration-300 transform ${isList ? 'bg-rose-500 text-white scale-105' : 'bg-white/90 text-gray-400 hover:bg-white hover:text-rose-500 hover:scale-110'
-                                                } ${isList && ! 'group:hover'
+                                          className={`w-9 h-9 rounded-full flex items-center justify-center shadow-md transition-all duration-300 transform ${isList
+                                                      ? 'bg-rose-500 text-white scale-105'
+                                                      : 'bg-white/90 text-gray-400 hover:bg-white hover:text-rose-500 hover:scale-110'
                                                 } opacity-0 translate-x-full group-hover:translate-x-0 group-hover:opacity-100`}
                                     >
                                           <FaHeart className={`text-sm ${isList ? 'text-white' : 'text-gray-400'}`} />
                                     </button>
 
                                     {/* eye button (Quick View) */}
-                                    <button
-                                          // onClick={() => handleQuickView(item)}
-                                          className='w-9 h-9 rounded-full bg-white/90 text-gray-400 hover:bg-white hover:text-emerald-600 hover:scale-110 flex items-center justify-center shadow-md transition-all duration-300 transform opacity-0 translate-x-full group-hover:translate-x-0 group-hover:opacity-100 delay-75'
-                                    >
-                                          <FaEye className='text-sm' />
-                                    </button>
+                                    <Link to={`/products/${item.id}`}>
+                                          <button
+                                                className='w-9 h-9 rounded-full bg-white/90 text-gray-400 hover:bg-white hover:text-emerald-600 hover:scale-110 flex items-center justify-center shadow-md transition-all duration-300 transform opacity-0 translate-x-full group-hover:translate-x-0 group-hover:opacity-100 delay-75'
+                                          >
+                                                <FaEye className='text-sm' />
+                                          </button>
+                                    </Link>
                               </div>
                         </div>
 
@@ -83,14 +96,16 @@ export default function Home_TopSelling() {
                               <span className='text-xs font-semibold text-gray-500 bg-gray-100 px-2 py-1 rounded-md'>{kg}</span>
                               <div className='flex items-center gap-2 bg-gray-50 border border-gray-200 py-1 px-2 rounded-lg'>
                                     <button
-                                          className='text-sm font-bold text-gray-600 hover:text-emerald-600 px-1'
+                                          className='text-sm font-bold text-gray-600 hover:text-emerald-600 px-1 cursor-pointer'
                                           onClick={() => deCreaseQuantity(id)}
                                     >-</button>
-                                    {/* 🌟 ផ្លាស់ប្តូរពី item.amount មកជា currentAmount */}
+
+                                    {/* បង្ហាញចំនួន Quantity ពិតប្រាកដ */}
                                     <span className='text-sm font-semibold text-gray-800 min-w-[16px] text-center'>{currentAmount}</span>
+
                                     <button
-                                          className='text-sm font-bold text-gray-600 hover:text-emerald-600 px-1'
-                                          onClick={() => inCreaseQuantity(id)}
+                                          className='text-sm font-bold text-gray-600 hover:text-emerald-600 px-1 cursor-pointer'
+                                          onClick={handleIncrease}
                                     >+</button>
                               </div>
                         </div>
@@ -107,7 +122,7 @@ export default function Home_TopSelling() {
                         {/* addToCart */}
                         <button
                               onClick={() => addToCart(item)}
-                              className='w-full mt-2 bg-emerald-50 hover:bg-emerald-600 text-emerald-600 hover:text-white py-2 rounded-xl text-sm font-medium transition-colors duration-300 flex items-center justify-center gap-2'
+                              className='w-full mt-2 bg-emerald-50 hover:bg-emerald-600 text-emerald-600 hover:text-white py-2 rounded-xl text-sm font-medium transition-colors duration-300 flex items-center justify-center gap-2 cursor-pointer'
                         >
                               <FaShoppingBag className='text-xs' />
                               <span>Add to cart</span>

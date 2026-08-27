@@ -2,6 +2,7 @@ import { createContext, useEffect, useMemo, useState } from "react";
 import { home_topSellingData } from "../Data/Main/Home_TopSellingData";
 import { toast } from "react-toastify";
 
+
 export const ShopContext = createContext(null);
 
 export default function ShopContextProvider({ children }) {
@@ -19,14 +20,15 @@ export default function ShopContextProvider({ children }) {
       }, [cart]);
 
       // ================= subTotal =================
-      const taxi = 2.00;
       const subTotal = useMemo(() => {
             return cart.reduce((acc, item) => {
-                  // ដកសញ្ញាដុល្លារ ($) ចេញពីតម្លៃ (Price) ដើម្បីយកមកគណនាជា
                   const cleanPrice = parseFloat(item.price.replace("$", "")) || 0;
                   return acc + cleanPrice * item.amount;
             }, 0);
       }, [cart]);
+
+      // ================= delivery / taxi =================
+      const taxi = cart.length > 0 ? 2.00 : 0.00;
 
       // ================= total =================
       const total = useMemo(() => {
@@ -37,6 +39,12 @@ export default function ShopContextProvider({ children }) {
       const quantity = useMemo(() => {
             return cart.reduce((acc, item) => acc + item.amount, 0);
       }, [cart]);
+
+      // ================= getProductQuantity (សម្រាប់ទាញយកចំនួនតាម ID នីមួយៗ) =================
+      const getProductQuantity = (id) => {
+            const cartItems = cart.find((item) => item.id === id)
+            return cartItems ? cartItems.amount : 0
+      }
 
       // ================= addToCart =================
       const addToCart = (products) => {
@@ -162,6 +170,7 @@ export default function ShopContextProvider({ children }) {
                         subTotal,
                         total,
                         quantity,
+                        getProductQuantity,
                         addToCart,
                         inCreaseQuantity,
                         deCreaseQuantity,

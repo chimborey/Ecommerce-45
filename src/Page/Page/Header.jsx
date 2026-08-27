@@ -8,7 +8,6 @@ import MainCategory from "../../Components/Header/Main/MainCategory"
 import MainMenuList from "../../Components/Header/Main/MainMenuList"
 import MainDealsToday from "../../Components/Header/Main/MainDealsToday"
 import MainSpecailPrice from "../../Components/Header/Main/MainSpecailPrice"
-import MainClickMenu from "../../Components/Header/Main/MainClickMenu"
 
 export default function Header() {
 
@@ -72,7 +71,6 @@ export default function Header() {
                               <div className="flex items-center gap-3">
                                     <MainDealsToday />
                                     <MainSpecailPrice />
-                                    <MainClickMenu />
                               </div>
                         </div>
                   </nav>
