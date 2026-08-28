@@ -8,8 +8,8 @@ export default function WishList() {
       const { likeCart, likeQuantity, clearLikeCart } = useContext(ShopContext);
 
       return (
-            <section className="w-full h-screen overflow-hidden bg-gray-50/50 py-6 flex flex-col">
-                  <div className="container mx-auto md:max-w-7xl px-4 flex flex-col h-full">
+            <section className="w-full h-screen overflow-hidden bg-gray-50/50 py-14 flex flex-col">
+                  <div className="container mx-auto md:max-w-7xl mt-4 mb-4 flex flex-col h-full">
 
                         {/* Header Section */}
                         <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-200 flex-shrink-0">

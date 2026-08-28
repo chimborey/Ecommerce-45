@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ShopContext } from "../../../Context/ShopContext";
+import { ShopContext } from "../../Context/ShopContext";
 import { FaOpencart } from "react-icons/fa";
 
 export default function NavbarShoppingCart() {

@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { ShopContext } from "../../../Context/ShopContext";
+import { ShopContext } from "../../Context/ShopContext";
 import { FaSearch } from "react-icons/fa";
 
 export default function NavbarSearch() {
       const { searchCategory, setSearchCategory } = useContext(ShopContext);
-      const navigate = useNavigate(); 
+      const navigate = useNavigate();
 
       // មុខងារដោះស្រាយពេលចុច Enter
       const handleKeyDown = (e) => {
@@ -15,7 +15,7 @@ export default function NavbarSearch() {
       };
 
       return (
-            <div className="relative flex items-center w-full max-w-xs">
+            <div className="relative flex items-center w-full lg:w-[380px]">
                   {/* Search Input */}
                   <input
                         type="text"

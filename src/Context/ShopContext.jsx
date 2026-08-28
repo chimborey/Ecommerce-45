@@ -1,13 +1,15 @@
 import { createContext, useEffect, useMemo, useState } from "react";
-import { home_topSellingData } from "../Data/Main/Home_TopSellingData";
 import { toast } from "react-toastify";
+import { shopProductsData } from "../Data/Main/ShopProductsData";
+import { topProductsData } from "../Data/Main/TopProductsData";
+import { home_topSellingData } from "../Data/Main/Home_TopSellingData";
 
 
 export const ShopContext = createContext(null);
 
 export default function ShopContextProvider({ children }) {
       // ================= products =================
-      const [products, setProducts] = useState([...home_topSellingData]);
+      const [products, setProducts] = useState([...shopProductsData, ...topProductsData, ...home_topSellingData]);
 
       // ================= cart =================
       const [cart, setCart] = useState(() => {
@@ -182,10 +184,8 @@ export default function ShopContextProvider({ children }) {
                         toggleLike,
                         removeFromLike,
                         ClearFromLike,
-                        searchCategory,
-                        setSearchCategory,
-                        ratingCategory,
-                        setRatingCategory,
+                        searchCategory, setSearchCategory,
+                        ratingCategory, setRatingCategory,
                         filterProducts,
                   }}
             >

@@ -3,7 +3,9 @@ import { ShopContext } from "../../Context/ShopContext"
 import { FaTrash, FaPlus, FaMinus } from "react-icons/fa";
 
 export default function CartItem({ item }) {
-      const { inCreaseQuantity, deCreaseQuantity, removeFromCart, subTotal } = useContext(ShopContext)
+      const { inCreaseQuantity, deCreaseQuantity, removeFromCart } = useContext(ShopContext)
+      const cleanPrice = parseFloat(item?.price?.replace("$", "")) || 0;
+      const itemSubTotal = cleanPrice * item.amount;
 
       return (
             <div className="grid grid-cols-1 md:grid-cols-5 items-center gap-4 py-4 px-6 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
@@ -59,7 +61,7 @@ export default function CartItem({ item }) {
                   <div className="text-left md:text-center">
                         <span className="text-xs font-semibold text-gray-500 md:hidden">SubTotal: </span>
                         <h5 className="text-sm font-extrabold text-emerald-600">
-                              ${subTotal.toFixed(2)}
+                              ${itemSubTotal.toFixed(2)}
                         </h5>
                   </div>
 

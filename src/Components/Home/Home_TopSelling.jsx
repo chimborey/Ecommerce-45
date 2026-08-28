@@ -8,11 +8,12 @@ import { useContext, useEffect, useState } from 'react';
 import { ShopContext } from '../../Context/ShopContext';
 import SleketonCart from "../../Sleketon/SleketonCart";
 import { FaStar, FaHeart, FaShoppingBag, FaEye } from 'react-icons/fa';
+import { home_topSellingData } from '../../Data/Main/Home_TopSellingData';
 
 export default function Home_TopSelling() {
 
       // =========================== ShopContext =======================
-      const { addToCart, getProductQuantity, inCreaseQuantity, deCreaseQuantity, toggleLike, likeCart = [], filterProducts } = useContext(ShopContext)
+      const { addToCart, getProductQuantity, inCreaseQuantity, deCreaseQuantity, toggleLike, likeCart, } = useContext(ShopContext)
 
       // =========================== Loading =======================
       const [loading, setLoading] = useState(true)
@@ -23,8 +24,8 @@ export default function Home_TopSelling() {
       const sleketonCount = 5
 
       // =========================== Slice Products =======================
-      const leftProducts = filterProducts.slice(0, 7)
-      const rightProducts = filterProducts.slice(7, 14)
+      const leftProducts = home_topSellingData.slice(0, 7)
+      const rightProducts = home_topSellingData.slice(7, 14)
 
       // Render Product Card Function
       const renderProductCard = (item) => {

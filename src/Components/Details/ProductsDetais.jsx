@@ -2,19 +2,20 @@ import { useContext, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import { ShopContext } from "../../Context/ShopContext"
 import { FaStar, FaShoppingBag, FaHeart, FaArrowLeft } from "react-icons/fa"
+import { home_topSellingData } from "../../Data/Main/Home_TopSellingData"
 
-export default function ProductsDetais() {
+export default function ShopDetails() {
       const { id } = useParams()
-      const { filterProducts, addToCart, toggleLike, likeCart } = useContext(ShopContext)
+      const { addToCart, toggleLike, likeCart } = useContext(ShopContext)
       const [activeTap, setActiveTap] = useState("description")
       // ស្វែងរកផលិតផលតាម ID (ប្រើ String() ដើម្បីការពាររឿង Type Mismatch រវាង Number និង String)
-      const product = filterProducts?.find((item) => parseInt(item.id) === parseInt(id))
+      const product = home_topSellingData?.find((item) => parseInt(item.id) === parseInt(id))
 
       // State សម្រាប់ប្តូររូបភាពពេលចុចលើ SubImage
       const [activeImg, setActiveImg] = useState(product?.imgUrl1)
 
       // បើទិន្នន័យមិនទាន់មកដល់
-      if (!filterProducts) {
+      if (!home_topSellingData) {
             return (
                   <div className="w-full min-h-[60vh] flex items-center justify-center">
                         <p className="text-gray-500 font-medium">Loading product details...</p>
