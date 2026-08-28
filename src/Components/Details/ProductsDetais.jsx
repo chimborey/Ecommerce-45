@@ -43,7 +43,7 @@ export default function ShopDetails() {
       return (
             <section className="w-full min-h-screen bg-gray-50/50 py-12">
 
-                  <div className="container mx-auto md:max-w-7xl mt-24">
+                  <div className="container mx-auto md:max-w-7xl mt-12">
 
                         {/* Back Button */}
                         <Link to={-1} className="inline-flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-emerald-600 mb-8 transition-colors">

@@ -5,7 +5,7 @@ import section_banner from "../../assets/image/section-banner.png"
 export default function Blog_hero() {
       return (
             <section
-                  className="w-full h-[70vh] lg:h-[40vh] mt-28 rounded-2xl overflow-hidden bg-cover lg:bg-contain bg-center bg-no-repeat flex items-center justify-center"
+                  className="w-full h-[70vh] lg:h-[40vh] mt-12 rounded-2xl overflow-hidden bg-cover lg:bg-contain bg-center bg-no-repeat flex items-center justify-center"
                   style={{ backgroundImage: `url(${section_banner})` }}
             >
 

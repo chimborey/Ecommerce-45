@@ -13,7 +13,7 @@ export default function Cart() {
 
       return (
             <section className="w-full overflow-hidden py-14">
-                  <main className="mt-24 container mx-auto max-w-7xl px-4">
+                  <main className="mt-12 container mx-auto max-w-7xl px-4">
 
                         {/* ====================== Header ========================== */}
                         <div className="flex items-center justify-between py-4 px-6 rounded-2xl bg-white shadow-sm border border-gray-100 mb-6 transition-all">

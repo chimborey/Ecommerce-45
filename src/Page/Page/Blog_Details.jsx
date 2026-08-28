@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import Blog_Details_hero from "../../Components/Blog/Blog_Details_Hero";
+import Blog_Details_hero from "../../Components/Details/Blog_Details_Hero";
 import { blogHeroData } from "../../Data/Main/BlogData";
 import { HiMiniCalendarDateRange } from "react-icons/hi2";
 import { FaRegCommentDots, FaArrowLeft } from "react-icons/fa";
@@ -69,7 +69,7 @@ export default function Blog_Details() {
                   {/* =========================== Blog_Details_hero ================== */}
                   <Blog_Details_hero />
 
-                  <section className="w-full overflow-hidden py-14 bg-gray-50/50">
+                  <section className="w-full overflow-hidden py-7 bg-gray-50/50">
                         <main className="md:max-w-7xl mx-auto container px-4 space-y-6">
 
                               {/* 🟢 Back to Blog Button */}

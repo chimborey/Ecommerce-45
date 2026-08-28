@@ -26,7 +26,7 @@ export default function Home_Hero() {
 
       return (
             <section className="w-full overflow-hidden py-14">
-                  <main className="mt-12 container md:max-w-7xl mx-auto px-4">
+                  <main className="mt-12 container md:max-w-7xl mx-auto">
                         <div className="flex flex-col md:flex-row gap-3 items-center">
 
                               {/* Banner 1 */}
