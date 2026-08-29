@@ -81,10 +81,11 @@ export default function AppRouter() {
                         <Route path="report" element={<Report />} />
                         {/* ------------------ Setting ------------------------- */}
                         <Route path="setting" element={<Setting />} />
+                        <Route path="overviews" element={<LoginForm />}></Route>
                   </Route>
 
                   {/* ============================ Login ======================================== */}
-                  <Route path="/login" element={<LoginForm />}></Route>
+                  
             </Routes>
       )
 }
