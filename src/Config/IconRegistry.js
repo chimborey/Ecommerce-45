@@ -6,8 +6,9 @@ import * as FaIcon from "react-icons/fa"
 import * as BiIcon from "react-icons/bi"
 import * as MdIcon from "react-icons/md";
 import * as TFIIcon from "react-icons/tfi";
-import * as AiIcon from "react-icons/ai"; 
-
+import * as AiIcon from "react-icons/ai";
+import * as Io5Icon from "react-icons/io5"
+import * as PiIcon from "react-icons/pi"
 export const IconRegistry = {
       ...SiIcon,
       ...TiIcon,
@@ -17,5 +18,7 @@ export const IconRegistry = {
       ...MdIcon,
       ...TFIIcon,
       ...AiIcon,
+      ...Io5Icon,
+      ...PiIcon,
 }
 

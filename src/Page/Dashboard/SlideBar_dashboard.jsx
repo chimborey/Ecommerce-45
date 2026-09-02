@@ -31,7 +31,7 @@ export default function SlideBar_dashboard({ clickMenu, isOpenMobile, setIsOpenM
                         </div>
 
                         {/* ================================= MenuList ================================= */}
-                        <div className="flex-1 flex flex-col space-y-2 p-3 overflow-y-auto">
+                        <div className="flex-1 flex flex-col space-y-2 p-3 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                               {
                                     menuList.map((item, index) => {
                                           const { name, path } = item
@@ -43,22 +43,22 @@ export default function SlideBar_dashboard({ clickMenu, isOpenMobile, setIsOpenM
                                                             to={`/${businessTypes}/${path}`}
                                                             onClick={() => setIsOpenMobile(false)}
                                                             className={({ isActive }) => `
-                                                                  flex items-center gap-3 p-3 rounded-xl transition-all duration-200 font-medium
-                                                                  border-l-4 
-                                                                  ${clickMenu ? "md:justify-center" : "justify-start"}
-                                                                  ${isActive
+                            flex items-center gap-3 p-3 rounded-xl transition-all duration-200 font-medium
+                            border-l-4 
+                            ${clickMenu ? "md:justify-center" : "justify-start"}
+                            ${isActive
                                                                         ? "bg-emerald-600 text-white shadow-sm shadow-emerald-200 border-emerald-900 rounded-xl"
                                                                         : "text-emerald-700 hover:bg-emerald-50/80 hover:backdrop-blur-sm border-transparent hover:border-emerald-400"
                                                                   }
-                                                            `}
+                        `}
                                                       >
                                                             {IconComponent && <IconComponent className="text-xl flex-shrink-0" />}
 
                                                             {/* ប្រើប្រាស់ Transition លាក់/បង្ហាញ Text */}
                                                             <span className={`
-                                                                  text-sm truncate transition-all duration-300 overflow-hidden whitespace-nowrap
-                                                                  ${clickMenu ? "md:w-0 md:opacity-0 md:pointer-events-none" : "w-auto opacity-100"}
-                                                            `}>
+                            text-sm truncate transition-all duration-300 overflow-hidden whitespace-nowrap
+                            ${clickMenu ? "md:w-0 md:opacity-0 md:pointer-events-none" : "w-auto opacity-100"}
+                        `}>
                                                                   {name}
                                                             </span>
                                                       </NavLink>

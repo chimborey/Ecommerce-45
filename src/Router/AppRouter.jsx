@@ -24,6 +24,10 @@ import Support from "../Modules/Support/Parents/Support"
 import Feedback from "../Modules/Feedback/Parents/Feedback"
 import Report from "../Modules/Reported/Parents/Report"
 import Setting from "../Modules/Settinged/Parents/Setting"
+import Notification from "../Modules/Notification/Parents/Notification"
+import Receipt from "../Modules/Receipt/Parent/Receipt"
+import Security from "../Modules/Security/Parents/Security"
+import Integrations from "../Modules/Integrations/Parents/Integrations"
 
 export default function AppRouter() {
       return (
@@ -81,6 +85,14 @@ export default function AppRouter() {
                         <Route path="report" element={<Report />} />
                         {/* ------------------ Setting ------------------------- */}
                         <Route path="setting" element={<Setting />} />
+                        {/* ------------------ Notification ------------------------- */}
+                        <Route path="notification" element={<Notification />} />
+                        {/* ------------------ Receipt ------------------------- */}
+                        <Route path="receipt" element={<Receipt />} />
+                        {/* ------------------ Security ------------------------- */}
+                        <Route path="integrations" element={<Integrations />} />
+                        {/* ------------------ Security ------------------------- */}
+                        <Route path="security" element={<Security />} />
                   </Route>
 
                   {/* ============================ Login ======================================== */}

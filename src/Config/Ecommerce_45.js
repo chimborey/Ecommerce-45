@@ -51,4 +51,24 @@ export const ecommerce_45 = [
             path: "setting",
             icon: "TfiSettings",
       },
+      {
+            name: "Notification",
+            path: "notification",
+            icon: "IoNotifications",
+      },
+      {
+            name: "Receipt",
+            path: "receipt",
+            icon: "IoReceiptSharp",
+      },
+      {
+            name: "Integrations",
+            path: "integrations",
+            icon: "PiPlugsFill",
+      },
+      {
+            name: "Security",
+            path: "security",
+            icon: "SiParrotsecurity",
+      },
 ]

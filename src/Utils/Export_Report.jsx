@@ -31,7 +31,7 @@ export default function Export_Report() {
 
                   {/* ===================== Dropdown Menu ពេលចុចលើប៊ូតុង ===================== */}
                   {isOpen && (
-                        <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-1 z-50 animate-fadeIn">
+                        <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-1 z-30 animate-fadeIn">
 
                               <button
                                     onClick={() => handleExport('PDF')}
