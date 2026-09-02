@@ -1,5 +1,5 @@
 
-import Security_Header from "../Children/Security_header";
+import Security_Header from "../Children/Security_Header";
 import Security_Settings from "../Children/Security_Settings";
 
 
