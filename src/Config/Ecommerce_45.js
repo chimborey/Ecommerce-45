@@ -7,11 +7,6 @@ export const ecommerce_45 = [
             icon: "SiSimpleanalytics",
       },
       {
-            name: "Financails",
-            path: "financails",
-            icon: "TiPointOfInterestOutline",
-      },
-      {
             name: "Order",
             path: "order",
             icon: "HiShoppingCart",
@@ -35,16 +30,6 @@ export const ecommerce_45 = [
             name: "Support",
             path: "support",
             icon: "BiSupport",
-      },
-      {
-            name: "Feedback",
-            path: "feedback",
-            icon: "MdFeedback",
-      },
-      {
-            name: "Report",
-            path: "report",
-            icon: "MdReport",
       },
       {
             name: "Setting",
