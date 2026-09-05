@@ -2,6 +2,7 @@ import { CiMenuFries } from "react-icons/ci";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { FaUserCircle } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi"; // បន្ថែម Icon Search
+import { Link } from "react-router-dom";
 
 export default function Header_dashboard({ toggleClick }) {
       return (
@@ -36,13 +37,15 @@ export default function Header_dashboard({ toggleClick }) {
                   <div className="flex items-center gap-3">
 
                         {/* Notification Bell */}
-                        <button
-                              className="relative p-2 rounded-full text-emerald-700 hover:bg-emerald-50 transition-colors focus:outline-none"
-                              aria-label="Notifications"
-                        >
-                              <IoMdNotificationsOutline className="text-2xl" />
-                              <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-                        </button>
+                        <Link to={'notification'}>
+                              <button
+                                    className="relative p-2 rounded-full text-emerald-700 hover:bg-emerald-50 transition-colors focus:outline-none"
+                                    aria-label="Notifications"
+                              >
+                                    <IoMdNotificationsOutline className="text-2xl" />
+                                    <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                              </button>
+                        </Link>
 
                         {/* Divider */}
                         <div className="h-6 w-[1px] bg-emerald-100"></div>

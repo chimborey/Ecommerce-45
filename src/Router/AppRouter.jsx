@@ -26,6 +26,7 @@ import Receipt from "../Modules/Receipt/Parent/Receipt"
 import Security from "../Modules/Security/Parents/Security"
 import Integrations from "../Modules/Integrations/Parents/Integrations"
 
+
 export default function AppRouter() {
       return (
             <Routes>

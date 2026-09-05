@@ -2,6 +2,7 @@ import { NavLink, useNavigate, useParams } from "react-router-dom"
 import { navByRegistry } from "../../Config/Registry"
 import { IconRegistry } from "../../Config/IconRegistry"
 import { FiLogOut } from "react-icons/fi"
+import { FaUserCircle } from "react-icons/fa"
 
 export default function SlideBar_dashboard({ clickMenu, isOpenMobile, setIsOpenMobile }) {
       const { businessTypes } = useParams()
@@ -22,12 +23,18 @@ export default function SlideBar_dashboard({ clickMenu, isOpenMobile, setIsOpenM
                         ${isOpenMobile ? "translate-x-0 w-64" : "-translate-x-full md:translate-x-0"}
                   `}>
 
-                        {/* ================================= Logo ================================= */}
-                        <div className="h-16 flex items-center px-4 font-bold text-lg text-emerald-800 border-b flex-shrink-0">
-                              <span className={`transition-all duration-300 overflow-hidden whitespace-nowrap ${clickMenu ? "md:w-0 md:opacity-0" : "w-auto opacity-100"}`}>
-                                    Dashboard
-                              </span>
-                              {clickMenu && <span className="text-xl mx-auto hidden md:block">DB</span>}
+                        {/* ================================= Logo & User Profile ================================= */}
+                        <div className="h-16 flex items-center px-4 font-bold text-lg text-emerald-800 border-b flex-shrink-0 gap-3 overflow-hidden">
+                              {/* Icon Profile */}
+                              <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold overflow-hidden border border-emerald-300 flex-shrink-0">
+                                    <FaUserCircle className="text-4xl text-emerald-600" />
+                              </div>
+
+                              {/* Text Info (លាក់ដោយស្វ័យប្រវត្តពេល clickMenu បង្រួម Sidebar) */}
+                              <div className={`flex flex-col text-left transition-all duration-300 overflow-hidden whitespace-nowrap ${clickMenu ? "md:w-0 md:opacity-0 md:pointer-events-none" : "w-auto opacity-100"}`}>
+                                    <span className="text-sm font-bold text-gray-800 truncate">John Doe</span>
+                                    <span className="text-[10px] text-emerald-600 font-medium uppercase tracking-wider">Admin Penal</span>
+                              </div>
                         </div>
 
                         {/* ================================= MenuList ================================= */}
